@@ -1,310 +1,303 @@
-/* ----------------------- */
-/* ESTILO GENERAL DEL SITIO */
-/* ----------------------- */
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
+/* ---------------------------------------------------
+   ESTILO GENERAL - CODEVERSE EDITION
+   Inspirado en estética tech / neón futurista
+--------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
+
+:root {
+  --color-bg: #0b0f19;
+  --color-accent: #00d8ff;
+  --color-light: #e6f7ff;
+  --color-dark: #101826;
+  --color-text: #dbefff;
+  --glow: 0 0 15px var(--color-accent), 0 0 30px var(--color-accent);
+}
+
+* {
   margin: 0;
-  background: #f5f6fa;
-  color: #222;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-main {
-  max-width: 900px;
-  margin: 2rem auto;
-  background: #fff;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at 20% 20%, #0e1b2b, #05080f);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* ----------------------- */
-/* NAVBAR */
-/* ----------------------- */
+/* ---------------------------------------------------
+   NAVBAR
+--------------------------------------------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #222;
-  color: #fff;
-  padding: 0.7rem 1.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  background: rgba(5, 10, 20, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-accent);
+  padding: 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 0 15px rgba(0, 216, 255, 0.3);
 }
 
-.nav-left {
+.nav-left, .nav-right {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
 .nav-logo {
-  font-weight: bold;
-  color: #4fc3f7;
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--color-accent);
   text-decoration: none;
-  font-size: 1.3rem;
+  text-shadow: var(--glow);
+  transition: 0.3s;
+}
+
+.nav-logo:hover {
+  color: #fff;
+  text-shadow: 0 0 20px #fff;
 }
 
 .nav-link {
-  color: #fff;
+  color: var(--color-light);
   text-decoration: none;
   padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  transition: background 0.2s;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 600;
 }
 
 .nav-link:hover {
-  background: #444;
+  background: var(--color-accent);
+  color: #000;
+  box-shadow: var(--glow);
 }
 
 .nav-link.active {
-  background: #4fc3f7;
+  background: var(--color-accent);
   color: #000;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
+  box-shadow: var(--glow);
 }
 
 .user-name {
-  color: #fff;
-  font-weight: 500;
-  margin-right: 0.7rem;
   font-size: 1rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  text-shadow: 0 0 10px var(--color-accent);
 }
 
 .icon-btn {
-  background: none;
+  background: transparent;
   border: none;
-  cursor: pointer;
+  color: var(--color-light);
   font-size: 1.5rem;
-  color: #fff;
-  padding: 0.2rem 0.5rem;
-  border-radius: 50%;
-  transition: background 0.2s;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .icon-btn:hover {
-  background: #444;
+  color: var(--color-accent);
+  text-shadow: var(--glow);
 }
 
-/* ----------------------- */
-/* SECCIONES GENERALES */
-/* ----------------------- */
-h1 {
-  color: #333;
+/* ---------------------------------------------------
+   SECCIONES
+--------------------------------------------------- */
+main {
+  flex: 1;
+  max-width: 1000px;
+  margin: 3rem auto;
+  background: rgba(15, 25, 40, 0.7);
+  border: 1px solid rgba(0, 216, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 216, 255, 0.15);
+  padding: 2.5rem;
+  backdrop-filter: blur(10px);
+  color: var(--color-text);
+}
+
+h1, h2 {
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  text-shadow: var(--glow);
 }
 
 section {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
-/* ----------------------- */
-/* TARJETAS DE CERTIFICACIÓN */
-/* ----------------------- */
+/* ---------------------------------------------------
+   TARJETAS
+--------------------------------------------------- */
 .card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1.2rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 216, 255, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
   margin: 1.2rem 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 216, 255, 0.15);
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  transform: translateY(-6px);
+  box-shadow: var(--glow);
 }
 
 .card h2 {
-  margin-top: 0;
-  color: #007acc;
+  color: var(--color-accent);
 }
 
 .card button {
-  background: #007acc;
+  background: linear-gradient(90deg, var(--color-accent), #0097c1);
   border: none;
   color: #fff;
+  font-weight: 600;
   padding: 0.6rem 1rem;
-  margin-right: 0.5rem;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 500;
-  transition: background 0.2s;
+  transition: 0.3s;
+  text-transform: uppercase;
 }
 
 .card button:hover {
-  background: #005b99;
+  box-shadow: var(--glow);
+  transform: scale(1.05);
 }
 
 .card.deshabilitado {
-  opacity: 0.7;
-  background: #f0f0f0;
-  pointer-events: none;
+  opacity: 0.4;
+  filter: blur(0.3px);
 }
 
-/* ----------------------- */
-/* FORMULARIO DE CONTACTO */
-/* ----------------------- */
+/* ---------------------------------------------------
+   FORMULARIOS
+--------------------------------------------------- */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 1.5rem;
 }
 
-input[type="text"],
-input[type="email"],
-textarea {
+input, textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,216,255,0.2);
+  color: var(--color-light);
   padding: 0.8rem;
-  border: 1px solid #bbb;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 1rem;
-  width: 100%;
-  resize: none;
+  outline: none;
+  transition: 0.3s;
 }
 
-textarea {
-  height: 120px;
+input:focus, textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: var(--glow);
 }
 
 button[type="submit"] {
-  background: #007acc;
+  background: linear-gradient(90deg, var(--color-accent), #007ba7);
   border: none;
   color: #fff;
-  padding: 0.7rem;
-  border-radius: 5px;
+  padding: 0.9rem;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background 0.2s;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  text-transform: uppercase;
 }
 
 button[type="submit"]:hover {
-  background: #005b99;
+  box-shadow: var(--glow);
+  transform: scale(1.03);
 }
 
-/* ----------------------- */
-/* EXAMEN */
-/* ----------------------- */
-#preguntas {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
+/* ---------------------------------------------------
+   EXAMEN
+--------------------------------------------------- */
 #preguntas div {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,216,255,0.3);
   padding: 1rem;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  background: #fafafa;
-}
-
-#preguntas label {
-  display: block;
-  margin-top: 0.4rem;
-  cursor: pointer;
 }
 
 #enviarBtn {
   display: block;
   margin: 2rem auto;
-  background: #4caf50;
+  background: linear-gradient(90deg, #00d8ff, #0095bf);
   color: #fff;
-  font-size: 1.1rem;
-  padding: 0.7rem 1.4rem;
   border: none;
-  border-radius: 6px;
+  font-size: 1.1rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: 0.3s;
+  text-transform: uppercase;
 }
 
 #enviarBtn:hover {
-  background: #3c8c3f;
+  box-shadow: var(--glow);
+  transform: scale(1.05);
 }
 
-/* ----------------------- */
-/* PIE DE PÁGINA */
-/* ----------------------- */
-footer {
-  background: #222;
-  color: #ccc;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-}
-
-/* ----------------------- */
-/* MODAL DE LOGIN (igual que el tuyo) */
-/* ----------------------- */
+/* ---------------------------------------------------
+   MODAL LOGIN
+--------------------------------------------------- */
 .modal {
   display: none;
   position: fixed;
   z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: auto;
-  background: rgba(0,0,0,0.3);
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
 }
 
 .modal-content {
-  background: #fff;
-  margin: 7% auto;
-  padding: 2rem 2rem 1.5rem 2rem;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 350px;
-  position: relative;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  background: rgba(15,25,40,0.95);
+  border: 1px solid var(--color-accent);
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: var(--glow);
 }
 
 .close {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 1.5rem;
-  color: #888;
+  right: 20px;
+  top: 15px;
+  color: var(--color-accent);
+  font-size: 1.8rem;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: 0.3s;
 }
 
 .close:hover {
-  color: #222;
-}
-
-#formLogin {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-#formLogin input[type="text"],
-#formLogin input[type="password"] {
-  padding: 0.6rem;
-  border: 1px solid #bbb;
-  border-radius: 4px;
-  font-size: 1rem;
-}
-
-#formLogin button {
-  background: #007acc;
   color: #fff;
-  border: none;
-  padding: 0.7rem;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.2s;
+  text-shadow: var(--glow);
 }
 
-#formLogin button:hover {
-  background: #005b99;
+/* ---------------------------------------------------
+   FOOTER
+--------------------------------------------------- */
+footer {
+  background: #050a14;
+  color: var(--color-light);
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid rgba(0,216,255,0.2);
+  box-shadow: 0 -2px 10px rgba(0,216,255,0.1);
+  letter-spacing: 1px;
 }
