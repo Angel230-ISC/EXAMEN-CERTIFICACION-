@@ -1,0 +1,58 @@
+[
+  {
+    "cuenta": "gina",
+    "contrasena": "1234",
+    "nombre": "Gina Salazar",
+    "pagoHecho": true,
+    "examenHecho": false,
+    "aprobado": false
+  },
+  {
+    "cuenta": "sofia",
+    "contrasena": "abcd",
+    "nombre": "Sofía Martínez",
+    "pagoHecho": false,
+    "examenHecho": false,
+    "aprobado": false
+  },
+  {
+    "cuenta": "karla",
+    "contrasena": "pass1",
+    "nombre": "Karla Domínguez",
+    "pagoHecho": false,
+    "examenHecho": false,
+    "aprobado": false
+  },
+  {
+    "cuenta": "luis",
+    "contrasena": "secreto",
+    "nombre": "Luis Fernández",
+    "pagoHecho": true,
+    "examenHecho": true,
+    "aprobado": true
+  },
+  {
+    "cuenta": "andrea",
+    "contrasena": "qwerty",
+    "nombre": "Andrea López",
+    "pagoHecho": false,
+    "examenHecho": false,
+    "aprobado": false
+  },
+  {
+    "cuenta": "prof_uaa",
+    "contrasena": "angular17",
+    "nombre": "Profesora Georgina Salazar",
+    "pagoHecho": false,
+    "examenHecho": false,
+    "aprobado": false
+  },
+  {
+    "cuenta": "Angel_Dani",
+    "contrasena": "ISC12",
+    "nombre": "Ángel Daniel García de Lara",
+    "pagoHecho": false,
+    "examenHecho": false,
+    "aprobado": false
+  }
+]

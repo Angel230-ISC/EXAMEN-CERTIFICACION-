@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "pregunta": "¿Qué palabra clave se usa para declarar una variable en JavaScript?",
+    "opciones": ["var", "int", "declare", "def"],
+    "correcta": "var"
+  },
+  {
+    "id": 2,
+    "pregunta": "¿Qué método convierte un JSON a objeto en JavaScript?",
+    "opciones": ["JSON.parse()", "JSON.stringify()", "parse.JSON()", "toObject()"],
+    "correcta": "JSON.parse()"
+  },
+  {
+    "id": 3,
+    "pregunta": "¿Cuál de estos tipos de datos NO existe en JavaScript?",
+    "opciones": ["float", "number", "boolean", "string"],
+    "correcta": "float"
+  },
+  {
+    "id": 4,
+    "pregunta": "¿Qué operador se usa para concatenar cadenas?",
+    "opciones": ["+", "&", ".", ","],
+    "correcta": "+"
+  },
+  {
+    "id": 5,
+    "pregunta": "¿Qué valor devuelve la expresión Boolean(0)?",
+    "opciones": ["false", "true", "undefined", "null"],
+    "correcta": "false"
+  },
+  {
+    "id": 6,
+    "pregunta": "¿Qué método agrega un nuevo elemento al final de un array?",
+    "opciones": ["push()", "add()", "append()", "insert()"],
+    "correcta": "push()"
+  },
+  {
+    "id": 7,
+    "pregunta": "¿Qué función se usa para imprimir en consola?",
+    "opciones": ["console.log()", "print()", "echo()", "debug()"],
+    "correcta": "console.log()"
+  },
+  {
+    "id": 8,
+    "pregunta": "¿Cómo se define una función de flecha?",
+    "opciones": ["()=>{}", "function=>{}", "=>{}", "func=>(){}"],
+    "correcta": "()=>{}"
+  },
+  {
+    "id": 9,
+    "pregunta": "¿Qué método devuelve la longitud de una cadena?",
+    "opciones": [".size", ".count()", ".length", ".len()"],
+    "correcta": ".length"
+  },
+  {
+    "id": 10,
+    "pregunta": "¿Qué estructura permite ejecutar código según una condición?",
+    "opciones": ["if", "for", "while", "switch"],
+    "correcta": "if"
+  },
+  {
+    "id": 11,
+    "pregunta": "¿Cómo se convierte un número a cadena?",
+    "opciones": ["toString()", "Stringify()", "parseInt()", "String()"],
+    "correcta": "toString()"
+  },
+  {
+    "id": 12,
+    "pregunta": "¿Qué valor devuelve typeof NaN?",
+    "opciones": ["number", "NaN", "undefined", "object"],
+    "correcta": "number"
+  },
+  {
+    "id": 13,
+    "pregunta": "¿Qué símbolo se usa para comentarios de una línea?",
+    "opciones": ["//", "/*", "#", "--"],
+    "correcta": "//"
+  },
+  {
+    "id": 14,
+    "pregunta": "¿Qué palabra reservada detiene un bucle?",
+    "opciones": ["break", "stop", "exit", "halt"],
+    "correcta": "break"
+  },
+  {
+    "id": 15,
+    "pregunta": "¿Qué método elimina el último elemento de un array?",
+    "opciones": ["pop()", "remove()", "splice()", "delete()"],
+    "correcta": "pop()"
+  },
+  {
+    "id": 16,
+    "pregunta": "¿Qué operador compara valores y tipo de datos?",
+    "opciones": ["===", "==", "=", "!="],
+    "correcta": "==="
+  }
+]
