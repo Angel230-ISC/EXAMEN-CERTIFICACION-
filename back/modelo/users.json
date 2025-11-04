@@ -3,52 +3,52 @@
     "cuenta": "gina",
     "contrasena": "1234",
     "nombre": "Gina Salazar",
-    "pagoHecho": true,
-    "examenHecho": false,
-    "aprobado": false
-  },
-  {
-    "cuenta": "sofia",
-    "contrasena": "abcd",
-    "nombre": "Sofía Martínez",
     "pagoHecho": false,
     "examenHecho": false,
     "aprobado": false
   },
   {
-    "cuenta": "karla",
-    "contrasena": "pass1",
-    "nombre": "Karla Domínguez",
+    "cuenta": "Obed",
+    "contrasena": "CruzAzul",
+    "nombre": "Obed Josue Huerta Soledad",
+    "pagoHecho": false,
+    "examenHecho": false,
+    "aprobado": false
+  },
+  {
+    "cuenta": "Carlos",
+    "contrasena": "password",
+    "nombre": "Carlos Alejandro Ramírez Prieto",
     "pagoHecho": false,
     "examenHecho": false,
     "aprobado": false
   },
   {
     "cuenta": "luis",
-    "contrasena": "secreto",
-    "nombre": "Luis Fernández",
+    "contrasena": "secretodeamor",
+    "nombre": "Luis Ángel Barragán González",
     "pagoHecho": true,
     "examenHecho": true,
     "aprobado": true
   },
   {
     "cuenta": "andrea",
-    "contrasena": "qwerty",
-    "nombre": "Andrea López",
+    "contrasena": "sudosu",
+    "nombre": "Andrea Espinoza López",
     "pagoHecho": false,
     "examenHecho": false,
     "aprobado": false
   },
   {
     "cuenta": "prof_uaa",
-    "contrasena": "angular17",
-    "nombre": "Profesora Georgina Salazar",
+    "contrasena": "programacion",
+    "nombre": "Dtr. Georgina Salazar",
     "pagoHecho": false,
     "examenHecho": false,
     "aprobado": false
   },
   {
-    "cuenta": "Angel_Dani",
+    "cuenta": "Angel",
     "contrasena": "ISC12",
     "nombre": "Ángel Daniel García de Lara",
     "pagoHecho": false,
