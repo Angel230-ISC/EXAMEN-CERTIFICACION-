@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacto</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="media/FaviconCodeVerse.png">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    /* 🔹 Solo agregamos espaciado general */
+    main section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.8;
+    }
+
+    section h1, section h2 {
+      margin-bottom: 10px;
+    }
+
+    section p {
+      margin-bottom: 15px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin-top: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #1877f2;
+    }
+
+    .social-links a:hover {
+      text-decoration: underline;
+    }
+
+    iframe {
+      margin-top: 15px;
+    }
+
+    .info-contacto {
+      margin-top: 30px;
+    }
+
+    .mapa {
+      margin-top: 35px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">CodeVerse</a>
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="certificaciones.html" class="nav-link">Certificaciones</a>
+      <a href="nosotros.html" class="nav-link">Nosotros</a>
+      <a href="contacto.html" class="nav-link active">Contacto</a>
+    </div>
+    <div class="nav-right">
+      <span id="userName" class="user-name"></span>
+      <button id="logoutBtn" class="icon-btn" style="display:none;">🚪</button>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main>
+    <section>
+      <h1>Contáctanos</h1>
+      <p>¿Tienes dudas, sugerencias o necesitas soporte? Envíanos un mensaje y te responderemos lo antes posible.</p>
+
+      <div class="card">
+        <form id="formContacto">
+          <input type="text" id="nombre" placeholder="Tu nombre" required><br>
+          <input type="email" id="correo" placeholder="Tu correo" required><br>
+          <textarea id="mensaje" placeholder="Escribe tu mensaje" required></textarea><br>
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+
+      <div class="info-contacto">
+        <h2>Información de contacto</h2>
+        <p><strong>📍 Dirección:</strong> Av. Innovación 245, Ciudad del Código, México</p>
+        <p><strong>📞 Teléfono:</strong> +52 55 7896 4321</p>
+        <p><strong>📧 Correo electrónico:</strong> soporte@codeverse.mx</p>
+        <p><strong>🕓 Horario de atención:</strong><br>
+          Lunes a Viernes: 9:00 a.m. – 7:00 p.m.<br>
+          Sábado: 10:00 a.m. – 2:00 p.m.
+        </p>
+        <p><strong>💬 Tiempo estimado de respuesta:</strong> dentro de las 24 horas hábiles siguientes.</p>
+      </div>
+
+      <div class="card" style="margin-top: 30px;">
+        <h2>Síguenos en nuestra red social</h2>
+        <p>Conéctate con nosotros para enterarte de nuevas certificaciones, promociones y actualizaciones.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/share/1A6H8kAviS/?mibextid=wwXIfr" target="_blank">📘 Síguenos en Facebook</a>
+        </div>
+        <p style="margin-top:15px;">
+          En nuestra página compartimos noticias sobre cursos, mejoras en la plataforma y eventos de tecnología.  
+          ¡Únete a la comunidad CodeVerse y mantente al día con lo más reciente!
+        </p>
+      </div>
+
+      <div class="mapa">
+        <h2>Encuéntranos fácilmente</h2>
+        <p>Estamos ubicados en el corazón tecnológico de la ciudad. Usa el mapa para visitarnos o conocer nuestra ubicación exacta.</p>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.392220993263!2d-99.17107742471605!3d19.39284304367644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff5c6b4d3b0f%3A0xa0b0dfc46af76c3a!2sCiudad%20de%20M%C3%A9xico!5e0!3m2!1ses!2smx!4v1699975500000!5m2!1ses!2smx"
+          width="100%"
+          height="300"
+          style="border:0; border-radius: 10px;"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 CodeVerse. Todos los derechos reservados.</p>
+    <p>Síguenos en nuestras redes:</p>
+    <a href="https://www.facebook.com/share/1A6H8kAviS/?mibextid=wwXIfr" target="_blank">
+      <img src="media/facebook.png" alt="Facebook">
+    </a>
+  </footer>
+  <!-- Librerías -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- Script principal unificado -->
+  <script src="app.js"></script>
+  <script>
+  // Escuchar el evento "submit" del formulario de contacto
+  document.getElementById("formContacto").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Obtener valores del formulario
+    const nombre = document.getElementById("nombre").value.trim();
+    const correo = document.getElementById("correo").value.trim();
+    const mensaje = document.getElementById("mensaje").value.trim();
+
+    // Validar que los campos no estén vacíos
+    if (!nombre || !correo || !mensaje) {
+      await Swal.fire({
+        icon: "warning",
+        title: "Campos incompletos",
+        text: "Por favor, llena todos los campos antes de enviar.",
+        confirmButtonColor: "#3085d6"
+      });
+      return;
+    }
+
+    try {
+      // Enviar los datos al servidor
+      const res = await fetch("http://localhost:3000/api/contacto", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ nombre, correo, mensaje })
+      });
+
+      if (res.ok) {
+        await Swal.fire({
+          icon: "success",
+          title: "Mensaje enviado",
+          text: "Gracias por contactarnos, pronto te responderemos.",
+          confirmButtonColor: "#3085d6"
+        });
+
+        // Limpiar formulario
+        document.getElementById("formContacto").reset();
+      } else {
+        const data = await res.json();
+        await Swal.fire({
+          icon: "error",
+          title: "Error al enviar",
+          text: data.error || "Ocurrió un problema al enviar el mensaje.",
+          confirmButtonColor: "#d33"
+        });
+      }
+    } catch (error) {
+      console.error("Error en el envío:", error);
+      await Swal.fire({
+        icon: "error",
+        title: "Error de conexión",
+        text: "No se pudo conectar con el servidor.",
+        confirmButtonColor: "#d33"
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

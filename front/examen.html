@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Examen - CodeVerse</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="media/FaviconCodeVerse.png">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    /* 🔹 Estilo del bloque informativo */
+    .info-examen {
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: #00ff99;
+      border: 2px solid #00ff99;
+      border-radius: 10px;
+      padding: 15px;
+      width: 60%;
+      margin: 30px auto 10px auto;
+      box-shadow: 0 0 10px #00ff99;
+    }
+
+    .info-examen p {
+      margin: 5px 0;
+      font-size: 1.1em;
+    }
+
+    .temporizador {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2em;
+      text-align: center;
+      margin: 20px;
+      color: #00ff99;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">CodeVerse</a>
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="certificaciones.html" class="nav-link active">Certificaciones</a>
+      <a href="nosotros.html" class="nav-link">Nosotros</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </div>
+    <div class="nav-right">
+      <span id="userName" class="user-name"></span>
+    </div>
+  </nav>
+
+  <!-- 🔹 Información del examen -->
+  <div class="info-examen" id="infoExamen">
+    <p><strong>👤 Usuario:</strong> <span id="infoUsuario">Cargando...</span></p>
+    <p><strong>📅 Fecha:</strong> <span id="infoFecha"></span></p>
+    <p><strong>🧠 Descripción:</strong> Certificación JavaScript Developer</p>
+  </div>
+
+  <!-- 🔹 Temporizador -->
+  <div class="temporizador">
+    ⏱ Tiempo restante: <span id="contador">02:00</span>
+  </div>
+
+  <main>
+    <section id="examenContainer">
+      <h1>Examen de JavaScript Developer</h1>
+      <div id="preguntas"></div>
+      <button id="enviarBtn" style="display:none;">Enviar Examen</button>
+    </section>
+  </main>
+
+  <script>
+    const token = localStorage.getItem("token");
+    if (!token) {
+      Swal.fire("Error", "Debes iniciar sesión para hacer el examen.", "error")
+        .then(() => window.location.href = "certificaciones.html");
+    }
+
+    // 🔹 Mostrar usuario y fecha (usando el mismo nombre del header)
+    document.addEventListener("DOMContentLoaded", () => {
+      // Toma el usuario del mismo lugar que usa el header
+      const nombreGuardado = localStorage.getItem("nombreUsuario") || localStorage.getItem("userName");
+      const nombre = nombreGuardado || document.getElementById("userName").textContent || "Desconocido";
+      document.getElementById("infoUsuario").textContent = nombre.trim() !== "" ? nombre : "Desconocido";
+      document.getElementById("infoFecha").textContent = new Date().toLocaleDateString();
+    });
+
+    let tiempoRestante = 0;
+    const contador = document.getElementById("contador");
+    let intervalo;
+
+    async function cargarPreguntas() {
+      const res = await fetch("http://localhost:3000/api/examen/start", {
+        method: "POST",
+        headers: { "Authorization": "Bearer " + token }
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+        Swal.fire("Atención", data.error, "warning");
+        return;
+      }
+
+      const cont = document.getElementById("preguntas");
+      cont.innerHTML = "";
+      data.examen.forEach((p, i) => {
+        const div = document.createElement("div");
+        div.classList.add("pregunta");
+        div.innerHTML = `
+          <p><strong>${i + 1}. ${p.pregunta}</strong></p>
+          ${p.opciones.map(o => `
+            <label>
+              <input type="radio" name="preg${p.id}" value="${o}"> ${o}
+            </label><br>
+          `).join("")}
+        `;
+        cont.appendChild(div);
+      });
+
+      document.getElementById("enviarBtn").style.display = "block";
+
+      // 🔹 Iniciar temporizador
+      tiempoRestante = Number(data.tiempoRestante) || 120;
+      iniciarTemporizador();
+    }
+
+    async function obtenerTiempoRestante() {
+      const res = await fetch("http://localhost:3000/api/examen/time", {
+        method: "GET",
+        headers: { "Authorization": "Bearer " + token }
+      });
+      const data = await res.json();
+      if (!data.error) tiempoRestante = data.tiempoRestante;
+    }
+
+    function iniciarTemporizador() {
+      clearInterval(intervalo);
+
+      intervalo = setInterval(async () => {
+        const minutos = Math.floor(tiempoRestante / 60);
+        const segundos = tiempoRestante % 60;
+        contador.textContent = `${minutos.toString().padStart(2, "0")}:${segundos.toString().padStart(2, "0")}`;
+
+        if (tiempoRestante <= 0) {
+          clearInterval(intervalo);
+          enviarExamenAuto();
+        }
+
+        tiempoRestante--;
+
+        // 🔹 Sincronizar cada 10 segundos
+        if (tiempoRestante % 10 === 0) {
+          await obtenerTiempoRestante();
+        }
+      }, 1000);
+    }
+
+    async function enviarExamenAuto() {
+      const inputs = document.querySelectorAll("input[type=radio]:checked");
+      const respuestas = Array.from(inputs).map(input => ({
+        id: parseInt(input.name.replace("preg", "")),
+        respuesta: input.value
+      }));
+
+      const res = await fetch("http://localhost:3000/api/examen/submit", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ respuestas })
+      });
+
+      const data = await res.json();
+
+      if (data.aprobado) {
+        Swal.fire("¡Felicidades!", `Calificación: ${data.calificacion}%`, "success")
+          .then(() => window.open("http://localhost:3000/" + data.certificado, "_blank"));
+      } else {
+        Swal.fire("No aprobado", `${data.error || "No alcanzaste el puntaje mínimo."}\nCalificación: ${data.calificacion || 0}%`, "error")
+          .then(() => window.location.href = "certificaciones.html");
+      }
+    }
+
+    document.getElementById("enviarBtn").addEventListener("click", enviarExamenAuto);
+
+    cargarPreguntas();
+  </script>
+
+  <footer>
+    <p>© 2025 CodeVerse. Todos los derechos reservados.</p>
+    <p>Síguenos en nuestras redes:</p>
+    <a href="https://www.facebook.com/share/1A6H8kAviS/?mibextid=wwXIfr" target="_blank">
+      <img src="media/facebook.png" alt="Facebook">
+    </a>
+  </footer>
+</body>
+</html>

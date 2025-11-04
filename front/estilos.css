@@ -1,0 +1,398 @@
+/* ---------------------------------------------------
+   ESTILO GENERAL - CODEVERSE EDITION
+   Inspirado en estética tech / neón futurista
+--------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
+
+:root {
+  --color-bg: #0b0f19;
+  --color-accent: #00d8ff;
+  --color-light: #e6f7ff;
+  --color-dark: #101826;
+  --color-text: #dbefff;
+  --glow: 0 0 15px var(--color-accent), 0 0 30px var(--color-accent);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at 20% 20%, #0e1b2b, #05080f);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------------------------------------------
+   NAVBAR
+--------------------------------------------------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(5, 10, 20, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-accent);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 0 15px rgba(0, 216, 255, 0.3);
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-logo {
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  text-shadow: var(--glow);
+  transition: 0.3s;
+}
+
+.nav-logo:hover {
+  color: #fff;
+  text-shadow: 0 0 20px #fff;
+}
+
+.nav-link {
+  color: var(--color-light);
+  text-decoration: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  background: var(--color-accent);
+  color: #000;
+  box-shadow: var(--glow);
+}
+
+.nav-link.active {
+  background: var(--color-accent);
+  color: #000;
+  box-shadow: var(--glow);
+}
+
+.user-name {
+  font-size: 1rem;
+  color: var(--color-accent);
+  font-weight: 600;
+  text-shadow: 0 0 10px var(--color-accent);
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-light);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icon-btn:hover {
+  color: var(--color-accent);
+  text-shadow: var(--glow);
+}
+
+/* ---------------------------------------------------
+   SECCIONES
+--------------------------------------------------- */
+main {
+  flex: 1;
+  max-width: 1000px;
+  margin: 3rem auto;
+  background: rgba(15, 25, 40, 0.7);
+  border: 1px solid rgba(0, 216, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 216, 255, 0.15);
+  padding: 2.5rem;
+  backdrop-filter: blur(10px);
+  color: var(--color-text);
+}
+
+h1, h2 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+  text-shadow: var(--glow);
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+/* ---------------------------------------------------
+   TARJETAS
+--------------------------------------------------- */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 216, 255, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.2rem 0;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 216, 255, 0.15);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--glow);
+}
+
+.card h2 {
+  color: var(--color-accent);
+}
+
+.card button {
+  background: linear-gradient(90deg, var(--color-accent), #0097c1);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+.card button:hover {
+  box-shadow: var(--glow);
+  transform: scale(1.05);
+}
+
+.card.deshabilitado {
+  opacity: 0.4;
+  filter: blur(0.3px);
+}
+
+/* ---------------------------------------------------
+   FORMULARIOS
+--------------------------------------------------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input, textarea {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,216,255,0.2);
+  color: var(--color-light);
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: var(--glow);
+}
+
+button[type="submit"] {
+  background: linear-gradient(90deg, var(--color-accent), #007ba7);
+  border: none;
+  color: #fff;
+  padding: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+button[type="submit"]:hover {
+  box-shadow: var(--glow);
+  transform: scale(1.03);
+}
+
+/* ---------------------------------------------------
+   EXAMEN
+--------------------------------------------------- */
+#preguntas div {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,216,255,0.3);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+#enviarBtn {
+  display: block;
+  margin: 2rem auto;
+  background: linear-gradient(90deg, #00d8ff, #0095bf);
+  color: #fff;
+  border: none;
+  font-size: 1.1rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+#enviarBtn:hover {
+  box-shadow: var(--glow);
+  transform: scale(1.05);
+}
+
+/* ---------------------------------------------------
+   MODAL LOGIN
+--------------------------------------------------- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
+}
+
+.modal-content {
+  background: rgba(15,25,40,0.95);
+  border: 1px solid var(--color-accent);
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: var(--glow);
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  color: var(--color-accent);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: #fff;
+  text-shadow: var(--glow);
+}
+
+/* ---------------------------------------------------
+   FOOTER
+--------------------------------------------------- */
+footer {
+  background: #050a14;
+  color: var(--color-light);
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid rgba(0,216,255,0.2);
+  box-shadow: 0 -2px 10px rgba(0,216,255,0.1);
+  letter-spacing: 1px;
+}
+
+/* Botones principales estilo uniforme */
+.btn-principal {
+  background: linear-gradient(90deg, var(--color-accent), #007ba7);
+  border: none;
+  color: #fff;
+  padding: 0.9rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  text-transform: uppercase;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+}
+
+.btn-principal:hover {
+  box-shadow: var(--glow);
+  transform: scale(1.03);
+  color: #fff;
+}
+
+ footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #0a0a0a;
+      color: #f1f1f1;
+      font-family: 'Orbitron', sans-serif;
+      border-top: 2px solid #4fc3f7;
+      margin-top: 40px;
+    }
+    footer img {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+      margin-top: 8px;
+    }
+
+/* 🔹 Bloque de información del examen (arriba del temporizador) */
+.info-examen {
+  background: rgba(0, 0, 0, 0.6);
+  color: #00ffcc;
+  text-align: center;
+  margin: 20px auto;
+  padding: 15px 25px;
+  border: 2px solid #00ff99;
+  border-radius: 15px;
+  width: 80%;
+  max-width: 800px;
+  box-shadow: 0 0 10px #00ff99;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.info-examen h2 {
+  margin: 5px 0;
+  font-size: 1.3em;
+  color: #00ff99;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-examen p {
+  margin: 3px 0;
+  font-size: 1em;
+  color: #ccffee;
+}
+
+/* 🔹 Temporizador */
+.temporizador {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2em;
+  text-align: center;
+  margin: 20px;
+  color: #00ff99;
+}
+
+/* 🔹 Botón enviar examen */
+#enviarBtn {
+  display: block;
+  margin: 30px auto;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #00ff99;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#enviarBtn:hover {
+  background-color: #00cc77;
+}
+
