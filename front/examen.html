@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Examen - CodeVerse</title>
+  <link rel="stylesheet" href="estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="media/FaviconCodeVerse.png">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    .temporizador {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2em;
+      text-align: center;
+      margin: 20px;
+      color: #00ff99;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">CodeVerse</a>
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="certificaciones.html" class="nav-link active">Certificaciones</a>
+      <a href="nosotros.html" class="nav-link">Nosotros</a>
+      <a href="contacto.html" class="nav-link">Contacto</a>
+    </div>
+    <div class="nav-right">
+      <span id="userName" class="user-name"></span>
+    </div>
+  </nav>
+
+  <!-- 🔹 Temporizador aquí -->
+  <div class="temporizador">
+    ⏱ Tiempo restante: <span id="contador">02:00</span>
+  </div>
+
+  <main>
+    <section id="examenContainer">
+      <h1>Examen de JavaScript Developer</h1>
+      <div id="preguntas"></div>
+      <button id="enviarBtn" style="display:none;">Enviar Examen</button>
+    </section>
+  </main>
+
+  <script>
+    const token = localStorage.getItem("token");
+    if (!token) {
+      Swal.fire("Error", "Debes iniciar sesión para hacer el examen.", "error")
+        .then(() => window.location.href = "certificaciones.html");
+    }
+
+    async function cargarPreguntas() {
+      const res = await fetch("http://localhost:3000/api/examen/start", {
+        method: "POST",
+        headers: { "Authorization": "Bearer " + token }
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+        Swal.fire("Atención", data.error, "warning");
+        return;
+      }
+
+      const cont = document.getElementById("preguntas");
+      cont.innerHTML = "";
+      data.examen.forEach((p, i) => {
+        const div = document.createElement("div");
+        div.classList.add("pregunta");
+        div.innerHTML = `
+          <p><strong>${i + 1}. ${p.pregunta}</strong></p>
+          ${p.opciones.map(o => `
+            <label>
+              <input type="radio" name="preg${p.id}" value="${o}"> ${o}
+            </label><br>
+          `).join("")}
+        `;
+        cont.appendChild(div);
+      });
+
+      document.getElementById("enviarBtn").style.display = "block";
+    }
+
+    cargarPreguntas();
+
+    async function enviarExamenAuto() {
+      const inputs = document.querySelectorAll("input[type=radio]:checked");
+      const respuestas = Array.from(inputs).map(input => ({
+        id: parseInt(input.name.replace("preg", "")),
+        respuesta: input.value
+      }));
+
+      if (respuestas.length < 8) {
+        Swal.fire("Tiempo agotado", "El tiempo ha terminado. Se enviará el examen automáticamente.", "warning");
+      }
+
+      const res = await fetch("http://localhost:3000/api/examen/submit", {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ respuestas })
+      });
+
+      const data = await res.json();
+
+      if (data.aprobado) {
+        Swal.fire("¡Felicidades!", `Calificación: ${data.calificacion}%`, "success")
+          .then(() => window.open("http://localhost:3000/" + data.certificado, "_blank"));
+      } else {
+        Swal.fire("No aprobado", `${data.mensaje}\nCalificación: ${data.calificacion}%`, "error")
+          .then(() => window.location.href = "certificaciones.html");
+      }
+    }
+
+    document.getElementById("enviarBtn").addEventListener("click", enviarExamenAuto);
+
+    // 🔹 TEMPORIZADOR DE 2 MINUTOS
+    let tiempoRestante = 120; // segundos (2 minutos)
+    const contador = document.getElementById("contador");
+
+    const intervalo = setInterval(() => {
+      const minutos = Math.floor(tiempoRestante / 60);
+      const segundos = tiempoRestante % 60;
+      contador.textContent = `${minutos.toString().padStart(2, "0")}:${segundos.toString().padStart(2, "0")}`;
+
+      if (tiempoRestante <= 0) {
+        clearInterval(intervalo);
+        enviarExamenAuto(); // Enviar examen automáticamente
+      }
+
+      tiempoRestante--;
+    }, 1000);
+  </script>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 CodeVerse. Todos los derechos reservados.</p>
+    <p>Síguenos en nuestras redes:</p>
+    <a href="https://www.facebook.com/share/1A6H8kAviS/?mibextid=wwXIfr" target="_blank">
+      <img src="media/facebook.png" alt="Facebook">
+    </a>
+  </footer>
+</body>
+</html>
