@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "nombre": "luis",
+    "correo": "barraganluis647@gmail.com",
+    "mensaje": "hola obed",
+    "fecha": "4/11/2025, 4:38:33 p.m."
+  },
+  {
+    "id": 2,
+    "nombre": "Luis Angel",
+    "correo": "barraganluis647@gmail.com",
+    "mensaje": "Hola servidor",
+    "fecha": "4/11/2025, 7:37:07 p.m."
+  },
+  {
+    "id": 3,
+    "nombre": "Angel",
+    "correo": "angel@gmail.com",
+    "mensaje": "excelentes certificados",
+    "fecha": "4/11/2025, 9:19:53 p.m."
+  },
+  {
+    "id": 4,
+    "nombre": "obed",
+    "correo": "obedazul@gmail.com",
+    "mensaje": "Ahora cuento con mi certificado, cuando habilitan los demas",
+    "fecha": "4/11/2025, 9:20:32 p.m."
+  },
+  {
+    "id": 5,
+    "nombre": "Carlos",
+    "correo": "carlos@gmail.com",
+    "mensaje": "Quiero visitar sus instalaciones",
+    "fecha": "4/11/2025, 9:20:54 p.m."
+  }
+]

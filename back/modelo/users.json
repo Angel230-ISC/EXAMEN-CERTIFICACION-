@@ -1,0 +1,62 @@
+[
+  {
+    "cuenta": "gina",
+    "contrasena": "1234",
+    "nombre": "Gina Salazar",
+    "pagoHecho": false,
+    "examenHecho": false,
+    "aprobado": false
+  },
+  {
+    "cuenta": "Obed",
+    "contrasena": "CruzAzul",
+    "nombre": "Obed Josue Huerta Soledad",
+    "pagoHecho": false,
+    "examenHecho": false,
+    "aprobado": false,
+    "inicioExamen": 1762313853193,
+    "duracionExamen": 120000
+  },
+  {
+    "cuenta": "Carlos",
+    "contrasena": "password",
+    "nombre": "Carlos Alejandro Ramírez Prieto",
+    "pagoHecho": false,
+    "examenHecho": false,
+    "aprobado": false
+  },
+  {
+    "cuenta": "luis",
+    "contrasena": "secreto",
+    "nombre": "Luis Ángel Barragán González",
+    "pagoHecho": true,
+    "examenHecho": true,
+    "aprobado": false,
+    "inicioExamen": 1762315588596,
+    "duracionExamen": 120000
+  },
+  {
+    "cuenta": "andrea",
+    "contrasena": "sudosu",
+    "nombre": "Andrea Espinoza López",
+    "pagoHecho": false,
+    "examenHecho": false,
+    "aprobado": false
+  },
+  {
+    "cuenta": "prof_uaa",
+    "contrasena": "programacion",
+    "nombre": "Dtr. Georgina Salazar",
+    "pagoHecho": false,
+    "examenHecho": false,
+    "aprobado": false
+  },
+  {
+    "cuenta": "Angel",
+    "contrasena": "ISC12",
+    "nombre": "Ángel Daniel García de Lara",
+    "pagoHecho": false,
+    "examenHecho": false,
+    "aprobado": false
+  }
+]
